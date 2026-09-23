@@ -12,6 +12,32 @@
 <body>
 
 <header id="siteHeader">
+  <div class="side left">
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+    <nav id="mainNav">
+      <div class="navgroup"><a href="index.html">Home</a></div>
+      <div class="navgroup">
+        <a href="groceries.html">Groceries</a>
+        <div class="dropdown">
+          <a href="groceries.html#spices">Spices &amp; Masalas</a>
+          <a href="groceries.html#grains">Grains &amp; Lentils</a>
+          <a href="groceries.html#snacks">Snacks &amp; Namkeen</a>
+          <a href="groceries.html#sweets-groc">Sweets &amp; Festive</a>
+        </div>
+      </div>
+      <div class="navgroup">
+        <a href="restaurant.html">Restaurant</a>
+        <div class="dropdown">
+          <a href="#combo">Combo Specials</a>
+          <a href="#south-indian">South Indian</a>
+          <a href="#curries">Curries &amp; Entrées</a>
+          <a href="#tandoor-rice">Tandoor &amp; Rice</a>
+        </div>
+      </div>
+      <div class="navgroup"><a href="#visit">Visit</a></div>
+    </nav>
+  </div>
+
   <a class="brandmark" href="index.html">
     <svg class="lotus-mark" viewBox="0 0 64 64" aria-hidden="true">
       <circle cx="20" cy="8" r="1.6"/><circle cx="44" cy="8" r="1.6"/>
@@ -25,103 +51,204 @@
     </svg>
     <span class="wordmark">namaste<span class="sp">Spiceland</span></span>
   </a>
-  <nav id="mainNav">
-    <div class="navgroup"><a href="index.html">Home</a></div>
-    <div class="navgroup">
-      <a href="groceries.html">Groceries</a>
-      <div class="dropdown">
-        <a href="groceries.html#spices">Spices &amp; Masalas</a>
-        <a href="groceries.html#grains">Grains &amp; Lentils</a>
-        <a href="groceries.html#snacks">Snacks &amp; Namkeen</a>
-        <a href="groceries.html#sweets">Sweets &amp; Festive</a>
-      </div>
+
+  <div class="side right">
+    <div class="auth-links">
+      <a href="#" onclick="openAuth('login');return false;">Log in</a>
+      <span class="divider">|</span>
+      <a href="#" onclick="openAuth('signup');return false;">Sign up</a>
     </div>
-    <div class="navgroup">
-      <a href="restaurant.html">Restaurant</a>
-      <div class="dropdown">
-        <a href="#buffet">Daily Buffet</a>
-        <a href="#south-indian">South Indian</a>
-        <a href="#curries">Curries &amp; Entrées</a>
-        <a href="#combos">Combo Plates</a>
-      </div>
-    </div>
-    <div class="navgroup"><a href="#visit">Visit</a></div>
-    <a class="navbtn" href="tel:6263455514">Order — (626) 345-5514</a>
-  </nav>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+    <button class="cart-btn" onclick="openCart()">Cart<span class="cart-badge" id="cartBadge" style="display:none;">0</span></button>
+  </div>
 </header>
 
-<section class="page-hero">
-  <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Restaurant</div>
-  <h1>The Restaurant</h1>
-  <p>A rotating North Indian buffet daily, South Indian favorites made to order, and combination plates you build yourself.</p>
-</section>
+<!-- page-hero block removed here — the slideshow now fills this space directly under the header -->
+<div class="slideshow" id="combo" style="margin-top:calc(var(--header-h) + 24px);">
+  <div class="slides-track" id="slidesTrack">
 
-<section class="category" id="buffet">
-  <div class="note-banner">Build-your-own combo plates, $7.99–$10.99 &middot; Fresh North Indian buffet changes daily, 9:30 AM–9 PM</div>
-  <div class="card-grid">
-    <div class="card" id="south-indian">
-      <span class="tag">SOUTH INDIAN</span>
-      <h3>Dosa &amp; Idli</h3>
-      <ul>
-        <li>Mysore Masala Dosa</li>
-        <li>Plain / Rava Dosa</li>
-        <li>Idli <span class="price">2 pc</span></li>
-        <li>Uttapam</li>
-      </ul>
+    <div class="slide">
+      <div class="slide-img" style="background-image:url('https://images.pexels.com/photos/19834448/pexels-photo-19834448.jpeg?auto=compress&cs=tinysrgb&w=900')"></div>
+      <div class="slide-info">
+        <span class="kicker">COMBO SPECIAL #1</span>
+        <h3>Combo EK</h3>
+        <p>Two vegetables, basmati rice, raita, chapati or puri, pickle &amp; papad.</p>
+        <span class="price">$10.99</span>
+        <button class="add-btn" style="width:fit-content" onclick="addToCart('Combo EK',10.99)">Add to Cart</button>
+      </div>
     </div>
-    <div class="card">
-      <span class="tag">CHAAT &amp; SNACKS</span>
-      <h3>Street Favorites</h3>
-      <ul>
-        <li>Bhalla Papdi Chaat</li>
-        <li>Samosa <span class="price">2 pc</span></li>
-        <li>Vada Pao</li>
-        <li>Vegetable &amp; Chicken Pakora</li>
-      </ul>
+
+    <div class="slide">
+      <div class="slide-img" style="background-image:url('https://images.pexels.com/photos/34159108/pexels-photo-34159108.jpeg?auto=compress&cs=tinysrgb&w=900')"></div>
+      <div class="slide-info">
+        <span class="kicker">COMBO SPECIAL #2</span>
+        <h3>Combo DO</h3>
+        <p>Three vegetables, samosa, basmati rice, raita, chapati or puri, pickle and papad.</p>
+        <span class="price">$13.99</span>
+        <button class="add-btn" style="width:fit-content" onclick="addToCart('Combo DO',13.99)">Add to Cart</button>
+      </div>
     </div>
-    <div class="card" id="curries">
-      <span class="tag">CURRIES &amp; ENTRÉES</span>
-      <h3>From the Kitchen</h3>
-      <ul>
-        <li>Saag Paneer</li>
-        <li>Chana Masala</li>
-        <li>Chicken Madras</li>
-        <li>Lamb Korma</li>
-      </ul>
+
+    <div class="slide">
+      <div class="slide-img" style="background-image:url('assets/restaurant/mysore-masal-dosa.jpg')"></div>
+      <div class="slide-info">
+        <span class="kicker">SOUTH INDIAN</span>
+        <h3>Mysore Masala Dosa</h3>
+        <p>Crisp rice crepe, red chutney, spiced potato filling.</p>
+        <span class="price">$11.99</span>
+        <button class="add-btn" style="width:fit-content" onclick="addToCart('Mysore Masala Dosa',11.99)">Add to Cart</button>
+      </div>
     </div>
-    <div class="card">
-      <span class="tag">TANDOOR &amp; RICE</span>
-      <h3>Tandoor &amp; Biryani</h3>
-      <ul>
-        <li>Tandoori Chicken</li>
-        <li>Vegetable Biryani</li>
-        <li>Chicken Biryani</li>
-        <li>Jeera Rice</li>
-      </ul>
+
+  </div>
+  <button class="slide-arrow prev" id="slidePrev">&#10094;</button>
+  <button class="slide-arrow next" id="slideNext">&#10095;</button>
+  <div class="slide-dots" id="slideDots"></div>
+</div>
+
+<div class="shop-layout">
+  <aside class="shop-sidebar">
+    <a href="#combo">Combo Specials</a>
+    <a href="#south-indian">South Indian</a>
+    <a href="#chaat">Chaat &amp; Snacks</a>
+    <a href="#curries">Curries &amp; Entrées</a>
+    <a href="#tandoor-rice">Tandoor &amp; Rice</a>
+    <a href="#breads">Breads</a>
+    <a href="#sweets">Sweets</a>
+  </aside>
+
+  <div>
+    <div class="shop-group" id="south-indian">
+      <h3 class="shop-group-title">South Indian</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/mysore-masal-dosa.jpg')"></div>
+          <div class="item-body"><h4>Mysore Masala Dosa</h4><p class="desc">Crisp rice crepe, red chutney, spiced potato filling.</p>
+            <div class="item-foot"><span class="price">$11.99</span><button class="add-btn" onclick="addToCart('Mysore Masala Dosa',11.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/plainrava-dosa.jpg')"></div>
+          <div class="item-body"><h4>Plain / Rava Dosa</h4><p class="desc">Thin, golden and crisp, served with sambar &amp; chutney.</p>
+            <div class="item-foot"><span class="price">$9.99</span><button class="add-btn" onclick="addToCart('Plain Dosa',9.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/idli.jpg')"></div>
+          <div class="item-body"><h4>Idli (2 pc)</h4><p class="desc">Steamed rice cakes with sambar and coconut chutney.</p>
+            <div class="item-foot"><span class="price">$6.99</span><button class="add-btn" onclick="addToCart('Idli',6.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/uttapam.jpg')"></div>
+          <div class="item-body"><h4>Uttapam</h4><p class="desc">Thick savory pancake topped with onion &amp; tomato.</p>
+            <div class="item-foot"><span class="price">$10.99</span><button class="add-btn" onclick="addToCart('Uttapam',10.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <span class="tag">BREADS</span>
-      <h3>Fresh Off the Tawa</h3>
-      <ul>
-        <li>Plain Naan</li>
-        <li>Aloo Paratha</li>
-        <li>Gobi Paratha</li>
-        <li>Puri</li>
-      </ul>
+
+    <div class="shop-group" id="chaat">
+      <h3 class="shop-group-title">Chaat &amp; Snacks</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/bhalla-papadi-chat.jpg')"></div>
+          <div class="item-body"><h4>Bhalla Papdi Chaat</h4><p class="desc">Crisp wafers, yogurt, tamarind &amp; mint chutney.</p>
+            <div class="item-foot"><span class="price">$8.99</span><button class="add-btn" onclick="addToCart('Bhalla Papdi Chaat',8.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('https://images.unsplash.com/photo-1747008624832-e068ee496908?auto=format&fit=crop&w=700&q=70')"></div>
+          <div class="item-body"><h4>Samosa (2 pc)</h4><p class="desc">Golden pastry, spiced potato &amp; pea filling.</p>
+            <div class="item-foot"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Samosa',5.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/vadapav.jpg')"></div>
+          <div class="item-body"><h4>Vada Pao</h4><p class="desc">Spiced potato fritter in a soft bun with chutney.</p>
+            <div class="item-foot"><span class="price">$6.99</span><button class="add-btn" onclick="addToCart('Vada Pao',6.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/veg-pakora.jpg')"></div>
+          <div class="item-body"><h4>Veg Pakora</h4><p class="desc">Crispy chickpea-batter fritters.</p>
+            <div class="item-foot"><span class="price">$7.99</span><button class="add-btn" onclick="addToCart('Veg Pakora',7.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card" id="combos">
-      <span class="tag">SWEETS &amp; COMBOS</span>
-      <h3>To Finish</h3>
-      <ul>
-        <li>Gulab Jamun</li>
-        <li>Rasmalai</li>
-        <li>Kheer</li>
-        <li>Kulfi</li>
-      </ul>
+
+    <div class="shop-group" id="curries">
+      <h3 class="shop-group-title">Curries &amp; Entrées</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/saag-paneer.jpg')"></div>
+          <div class="item-body"><h4>Saag Paneer</h4><p class="desc">Cottage cheese simmered in spiced spinach gravy.</p>
+            <div class="item-foot"><span class="price">$13.99</span><button class="add-btn" onclick="addToCart('Saag Paneer',13.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('https://images.pexels.com/photos/19834448/pexels-photo-19834448.jpeg?auto=compress&cs=tinysrgb&w=700')"></div>
+          <div class="item-body"><h4>Chana Masala</h4><p class="desc">Chickpeas simmered in a tangy tomato-onion masala.</p>
+            <div class="item-foot"><span class="price">$12.99</span><button class="add-btn" onclick="addToCart('Chana Masala',12.99)">ADD</button></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-group" id="tandoor-rice">
+      <h3 class="shop-group-title">Tandoor &amp; Rice</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('https://images.pexels.com/photos/34159109/pexels-photo-34159109.jpeg?auto=compress&cs=tinysrgb&w=700')"></div>
+          <div class="item-body"><h4>Vegetable Biryani</h4><p class="desc">Fragrant basmati layered with vegetables &amp; spice.</p>
+            <div class="item-foot"><span class="price">$13.99</span><button class="add-btn" onclick="addToCart('Vegetable Biryani',13.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/jeera-rice.jpg')"></div>
+          <div class="item-body"><h4>Jeera Rice</h4><p class="desc">Basmati rice tempered with roasted cumin.</p>
+            <div class="item-foot"><span class="price">$6.99</span><button class="add-btn" onclick="addToCart('Jeera Rice',6.99)">ADD</button></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-group" id="breads">
+      <h3 class="shop-group-title">Breads</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/garlic-naan.jpg')"></div>
+          <div class="item-body"><h4>Plain / Garlic Naan</h4><p class="desc">Baked fresh in the tandoor.</p>
+            <div class="item-foot"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Naan',3.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/aloo-parata.jpg')"></div>
+          <div class="item-body"><h4>Aloo / Gobi Paratha</h4><p class="desc">Stuffed griddle bread with potato or cauliflower.</p>
+            <div class="item-foot"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Paratha',5.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/puri.jpg')"></div>
+          <div class="item-body"><h4>Puri (3 pc)</h4><p class="desc">Deep-fried, puffed wheat bread.</p>
+            <div class="item-foot"><span class="price">$5.49</span><button class="add-btn" onclick="addToCart('Puri',5.49)">ADD</button></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-group" id="sweets">
+      <h3 class="shop-group-title">Sweets</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/gulab-jamun.jpg')"></div>
+          <div class="item-body"><h4>Gulab Jamun (2 pc)</h4><p class="desc">Warm milk dumplings in rose syrup.</p>
+            <div class="item-foot"><span class="price">$4.99</span><button class="add-btn" onclick="addToCart('Gulab Jamun',4.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/rasamalai.jpg')"></div>
+          <div class="item-body"><h4>Rasmalai (2 pc)</h4><p class="desc">Cottage cheese discs in saffron milk.</p>
+            <div class="item-foot"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Rasmalai',5.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/kheer.jpg')"></div>
+          <div class="item-body"><h4>Kheer</h4><p class="desc">Slow-simmered rice pudding, cardamom &amp; nuts.</p>
+            <div class="item-foot"><span class="price">$4.49</span><button class="add-btn" onclick="addToCart('Kheer',4.49)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/restaurant/kulfi.jpg')"></div>
+          <div class="item-body"><h4>Kulfi</h4><p class="desc">Dense traditional Indian ice cream on a stick.</p>
+            <div class="item-foot"><span class="price">$4.99</span><button class="add-btn" onclick="addToCart('Kulfi',4.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <section class="visit" id="visit">
   <h2>Visit Namaste Spiceland</h2>
@@ -138,10 +265,36 @@
 
 <footer>&copy; 2026 Namaste Spiceland &middot; Pasadena, CA &middot; Vegetarian Indian Market &amp; Kitchen</footer>
 
-<script>
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mainNav').classList.toggle('open');
-  });
-</script>
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><h3>Your Cart</h3><button class="cart-close" onclick="closeCart()">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    <a class="cta solid" href="tel:6263455514">Call to Order — (626) 345-5514</a>
+  </div>
+</div>
+
+<div class="modal" id="authModal">
+  <button class="modal-close" onclick="closeCart()">&times;</button>
+  <div class="modal-tabs">
+    <button id="tabLogin" class="active" onclick="showAuthTab('login')">Log in</button>
+    <button id="tabSignup" onclick="showAuthTab('signup')">Sign up</button>
+  </div>
+  <h3>Welcome to Namaste Spiceland</h3>
+  <form id="loginForm" onsubmit="return false;">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button class="cta solid" type="submit">Log in</button>
+  </form>
+  <form id="signupForm" style="display:none" onsubmit="return false;">
+    <input type="text" placeholder="Full name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Create password" required>
+    <button class="cta solid" type="submit">Sign up</button>
+  </form>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>

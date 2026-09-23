@@ -12,6 +12,31 @@
 <body>
 
 <header id="siteHeader">
+  <div class="side left">
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+    <nav id="mainNav">
+      <div class="navgroup"><a href="index.html">Home</a></div>
+      <div class="navgroup">
+        <a href="groceries.html">Groceries</a>
+        <div class="dropdown">
+          <a href="#spices">Spices &amp; Masalas</a>
+          <a href="#grains">Grains &amp; Lentils</a>
+          <a href="#snacks">Snacks &amp; Namkeen</a>
+          <a href="#sweets-groc">Sweets &amp; Festive</a>
+        </div>
+      </div>
+      <div class="navgroup">
+        <a href="restaurant.html">Restaurant</a>
+        <div class="dropdown">
+          <a href="restaurant.html#combo">Combo Specials</a>
+          <a href="restaurant.html#south-indian">South Indian</a>
+          <a href="restaurant.html#curries">Curries &amp; Entrées</a>
+        </div>
+      </div>
+      <div class="navgroup"><a href="#visit">Visit</a></div>
+    </nav>
+  </div>
+
   <a class="brandmark" href="index.html">
     <svg class="lotus-mark" viewBox="0 0 64 64" aria-hidden="true">
       <circle cx="20" cy="8" r="1.6"/><circle cx="44" cy="8" r="1.6"/>
@@ -25,102 +50,194 @@
     </svg>
     <span class="wordmark">namaste<span class="sp">Spiceland</span></span>
   </a>
-  <nav id="mainNav">
-    <div class="navgroup"><a href="index.html">Home</a></div>
-    <div class="navgroup">
-      <a href="groceries.html">Groceries</a>
-      <div class="dropdown">
-        <a href="#spices">Spices &amp; Masalas</a>
-        <a href="#grains">Grains &amp; Lentils</a>
-        <a href="#snacks">Snacks &amp; Namkeen</a>
-        <a href="#sweets">Sweets &amp; Festive</a>
-      </div>
+
+  <div class="side right">
+    <div class="auth-links">
+      <a href="#" onclick="openAuth('login');return false;">Log in</a>
+      <span class="divider">|</span>
+      <a href="#" onclick="openAuth('signup');return false;">Sign up</a>
     </div>
-    <div class="navgroup">
-      <a href="restaurant.html">Restaurant</a>
-      <div class="dropdown">
-        <a href="restaurant.html#buffet">Daily Buffet</a>
-        <a href="restaurant.html#south-indian">South Indian</a>
-        <a href="restaurant.html#curries">Curries &amp; Entrées</a>
-        <a href="restaurant.html#combos">Combo Plates</a>
-      </div>
-    </div>
-    <div class="navgroup"><a href="#visit">Visit</a></div>
-    <a class="navbtn" href="tel:6263455514">Order — (626) 345-5514</a>
-  </nav>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+    <button class="cart-btn" onclick="openCart()">Cart<span class="cart-badge" id="cartBadge" style="display:none;">0</span></button>
+  </div>
 </header>
 
-<section class="page-hero">
-  <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Groceries</div>
-  <h1>The Grocery Store</h1>
-  <p>Everything an Indian kitchen calls for — measured, packaged and shelved for the home cook.</p>
-</section>
+<!-- page-hero block removed here, same treatment as restaurant.html — the slideshow fills this space directly under the header -->
+<!-- Slideshow rotates random picks straight from the menu below, not fixed combos -->
+<div class="slideshow" id="combo" data-random-slideshow="groceries" style="margin-top:calc(var(--header-h) + 24px);">
+  <div class="slides-track" id="slidesTrack"></div>
+  <button class="slide-arrow prev" id="slidePrev">&#10094;</button>
+  <button class="slide-arrow next" id="slideNext">&#10095;</button>
+  <div class="slide-dots" id="slideDots"></div>
+</div>
 
-<section class="category">
-  <div class="card-grid">
-    <div class="card" id="spices">
-      <span class="tag">SPICES &amp; MASALAS</span>
-      <h3>Pantry Essentials</h3>
-      <ul>
-        <li>Whole &amp; Ground Spices</li>
-        <li>Curry &amp; Sambar Masalas</li>
-        <li>Pickles &amp; Chutneys</li>
-        <li>Ghee &amp; Cooking Oils</li>
-      </ul>
+<div class="shop-layout">
+  <aside class="shop-sidebar">
+    <a href="#spices">Spices &amp; Masalas</a>
+    <a href="#grains">Grains &amp; Lentils</a>
+    <a href="#produce">Produce</a>
+    <a href="#snacks">Snacks &amp; Namkeen</a>
+    <a href="#sweets-groc">Sweets &amp; Festive</a>
+    <a href="#beverages">Beverages</a>
+  </aside>
+
+  <div>
+    <div class="shop-group" id="spices">
+      <h3 class="shop-group-title">Spices &amp; Masalas</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/garam-masala.jpg')"></div>
+          <div class="item-body"><h4>Garam Masala, 100g</h4><p class="desc">House-blended warm spice mix.</p>
+            <div class="item-foot"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Garam Masala',3.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/curry-masala.jpg')"></div>
+          <div class="item-body"><h4>Curry Masala, 100g</h4><p class="desc">All-purpose curry spice blend.</p>
+            <div class="item-foot"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Curry Masala',3.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/turmeric-powder.jpg')"></div>
+          <div class="item-body"><h4>Turmeric Powder, 200g</h4><p class="desc">Bright, earthy ground turmeric.</p>
+            <div class="item-foot"><span class="price">$2.99</span><button class="add-btn" onclick="addToCart('Turmeric Powder',2.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/mango-pickle.jpg')"></div>
+          <div class="item-body"><h4>Mango Pickle, 400g</h4><p class="desc">Tangy, spiced traditional pickle.</p>
+            <div class="item-foot"><span class="price">$4.99</span><button class="add-btn" onclick="addToCart('Mango Pickle',4.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card" id="grains">
-      <span class="tag">GRAINS &amp; LENTILS</span>
-      <h3>Rice, Dal &amp; Flours</h3>
-      <ul>
-        <li>Basmati &amp; Sona Masoori Rice</li>
-        <li>Toor, Moong &amp; Chana Dal</li>
-        <li>Atta &amp; Besan Flours</li>
-        <li>Semolina &amp; Poha</li>
-      </ul>
+
+    <div class="shop-group" id="grains">
+      <h3 class="shop-group-title">Grains &amp; Lentils</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/basmati-rice.jpg')"></div>
+          <div class="item-body"><h4>Basmati Rice, 10lb</h4><p class="desc">Long-grain, aged aromatic basmati.</p>
+            <div class="item-foot"><span class="price">$18.99</span><button class="add-btn" onclick="addToCart('Basmati Rice 10lb',18.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/toor-dal.jpg')"></div>
+          <div class="item-body"><h4>Toor Dal, 4lb</h4><p class="desc">Split pigeon peas, everyday staple.</p>
+            <div class="item-foot"><span class="price">$7.99</span><button class="add-btn" onclick="addToCart('Toor Dal 4lb',7.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/moong-dal.jpg')"></div>
+          <div class="item-body"><h4>Moong Dal, 4lb</h4><p class="desc">Split mung lentils, quick-cooking.</p>
+            <div class="item-foot"><span class="price">$7.99</span><button class="add-btn" onclick="addToCart('Moong Dal 4lb',7.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/chapatti-atta.jpg')"></div>
+          <div class="item-body"><h4>Chapati Atta, 10lb</h4><p class="desc">Whole wheat flour for rotis &amp; parathas.</p>
+            <div class="item-foot"><span class="price">$12.99</span><button class="add-btn" onclick="addToCart('Chapati Atta 10lb',12.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <span class="tag">PRODUCE</span>
-      <h3>Fresh &amp; Frozen</h3>
-      <ul>
-        <li>Curry Leaves &amp; Cilantro</li>
-        <li>Seasonal Vegetables</li>
-        <li>Frozen Parathas</li>
-        <li>Paneer &amp; Dairy</li>
-      </ul>
+
+    <div class="shop-group" id="produce">
+      <h3 class="shop-group-title">Produce &amp; Frozen</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/curry-leaves.jpg')"></div>
+          <div class="item-body"><h4>Curry Leaves, bunch</h4><p class="desc">Fresh-cut, fragrant curry leaves.</p>
+            <div class="item-foot"><span class="price">$1.99</span><button class="add-btn" onclick="addToCart('Curry Leaves',1.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/cilantro.jpg')"></div>
+          <div class="item-body"><h4>Fresh Cilantro, bunch</h4><p class="desc">Locally sourced coriander leaves.</p>
+            <div class="item-foot"><span class="price">$1.49</span><button class="add-btn" onclick="addToCart('Fresh Cilantro',1.49)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/malabar-parata.jpg')"></div>
+          <div class="item-body"><h4>Frozen Malabar Paratha, 5pc</h4><p class="desc">Ready-to-griddle layered flatbread.</p>
+            <div class="item-foot"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Frozen Paratha',5.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/paneer.jpg')"></div>
+          <div class="item-body"><h4>Paneer, 400g</h4><p class="desc">Fresh, firm Indian cottage cheese.</p>
+            <div class="item-foot"><span class="price">$5.49</span><button class="add-btn" onclick="addToCart('Paneer',5.49)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card" id="snacks">
-      <span class="tag">SNACKS &amp; NAMKEEN</span>
-      <h3>Something Savory</h3>
-      <ul>
-        <li>Mixture &amp; Sev</li>
-        <li>Packaged Chips &amp; Farsan</li>
-        <li>Papad</li>
-        <li>Ready-to-Eat Meals</li>
-      </ul>
+
+    <div class="shop-group" id="snacks">
+      <h3 class="shop-group-title">Snacks &amp; Namkeen</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/bombay-mixture.jpg')"></div>
+          <div class="item-body"><h4>Bombay Mixture, 200g</h4><p class="desc">Classic crunchy savory mix.</p>
+            <div class="item-foot"><span class="price">$3.49</span><button class="add-btn" onclick="addToCart('Bombay Mixture',3.49)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/aloo-bhuja.jpg')"></div>
+          <div class="item-body"><h4>Aloo Bhujia, 200g</h4><p class="desc">Crispy spiced potato noodles.</p>
+            <div class="item-foot"><span class="price">$3.49</span><button class="add-btn" onclick="addToCart('Aloo Bhujia',3.49)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/papad.jpg')"></div>
+          <div class="item-body"><h4>Papad, pack of 10</h4><p class="desc">Thin lentil wafers, ready to roast or fry.</p>
+            <div class="item-foot"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Papad',3.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/banana-chips.jpg')"></div>
+          <div class="item-body"><h4>Banana Chips, 200g</h4><p class="desc">Coconut-oil fried, lightly salted.</p>
+            <div class="item-foot"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Banana Chips',3.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card" id="sweets">
-      <span class="tag">SWEETS &amp; FESTIVE</span>
-      <h3>Mithai &amp; More</h3>
-      <ul>
-        <li>Boxed Mithai</li>
-        <li>Incense &amp; Diyas</li>
-        <li>Festive Décor</li>
-        <li>Gifting Sets</li>
-      </ul>
+
+    <div class="shop-group" id="sweets-groc">
+      <h3 class="shop-group-title">Sweets &amp; Festive</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/assorted-mithai-box.jpg')"></div>
+          <div class="item-body"><h4>Assorted Mithai Box, 500g</h4><p class="desc">Chef's selection of boxed sweets.</p>
+            <div class="item-foot"><span class="price">$12.99</span><button class="add-btn" onclick="addToCart('Mithai Box',12.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/soan-papadi.jpg')"></div>
+          <div class="item-body"><h4>Soan Papdi, 250g</h4><p class="desc">Flaky, saffron-scented sweet.</p>
+            <div class="item-foot"><span class="price">$4.99</span><button class="add-btn" onclick="addToCart('Soan Papdi',4.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/incence-stick.jpg')"></div>
+          <div class="item-body"><h4>Incense Sticks, pack</h4><p class="desc">Traditional temple fragrance.</p>
+            <div class="item-foot"><span class="price">$2.49</span><button class="add-btn" onclick="addToCart('Incense Sticks',2.49)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/diya-set.jpg')"></div>
+          <div class="item-body"><h4>Diya Set, 6 pc</h4><p class="desc">Hand-painted clay oil lamps.</p>
+            <div class="item-foot"><span class="price">$4.99</span><button class="add-btn" onclick="addToCart('Diya Set',4.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <span class="tag">BEVERAGES</span>
-      <h3>To Drink</h3>
-      <ul>
-        <li>Masala Chai</li>
-        <li>Lassi Mixes</li>
-        <li>Fruit Syrups &amp; Sharbat</li>
-        <li>Coconut Water</li>
-      </ul>
+
+    <div class="shop-group" id="beverages">
+      <h3 class="shop-group-title">Beverages</h3>
+      <div class="item-grid">
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/masala-chai.jpg')"></div>
+          <div class="item-body"><h4>Masala Chai, 250g</h4><p class="desc">Loose-leaf spiced black tea blend.</p>
+            <div class="item-foot"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Masala Chai',5.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/rose-syrup.jpg')"></div>
+          <div class="item-body"><h4>Rose Syrup, 750ml</h4><p class="desc">For sharbat, lassi &amp; desserts.</p>
+            <div class="item-foot"><span class="price">$6.99</span><button class="add-btn" onclick="addToCart('Rose Syrup',6.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/mango-lasi-mix.jpg')"></div>
+          <div class="item-body"><h4>Mango Lassi Mix</h4><p class="desc">Just blend with yogurt &amp; ice.</p>
+            <div class="item-foot"><span class="price">$4.99</span><button class="add-btn" onclick="addToCart('Mango Lassi Mix',4.99)">ADD</button></div></div>
+        </div>
+        <div class="item-card">
+          <div class="item-media" style="background-image:url('assets/groceries/coconut-water.jpg')"></div>
+          <div class="item-body"><h4>Coconut Water, 6-pack</h4><p class="desc">Natural, no sugar added.</p>
+            <div class="item-foot"><span class="price">$8.99</span><button class="add-btn" onclick="addToCart('Coconut Water',8.99)">ADD</button></div></div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <section class="visit" id="visit">
   <h2>Visit Namaste Spiceland</h2>
@@ -137,10 +254,36 @@
 
 <footer>&copy; 2026 Namaste Spiceland &middot; Pasadena, CA &middot; Vegetarian Indian Market &amp; Kitchen</footer>
 
-<script>
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mainNav').classList.toggle('open');
-  });
-</script>
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><h3>Your Cart</h3><button class="cart-close" onclick="closeCart()">&times;</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    <a class="cta solid" href="tel:6263455514">Call to Order — (626) 345-5514</a>
+  </div>
+</div>
+
+<div class="modal" id="authModal">
+  <button class="modal-close" onclick="closeCart()">&times;</button>
+  <div class="modal-tabs">
+    <button id="tabLogin" class="active" onclick="showAuthTab('login')">Log in</button>
+    <button id="tabSignup" onclick="showAuthTab('signup')">Sign up</button>
+  </div>
+  <h3>Welcome to Namaste Spiceland</h3>
+  <form id="loginForm" onsubmit="return false;">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" required>
+    <button class="cta solid" type="submit">Log in</button>
+  </form>
+  <form id="signupForm" style="display:none" onsubmit="return false;">
+    <input type="text" placeholder="Full name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Create password" required>
+    <button class="cta solid" type="submit">Sign up</button>
+  </form>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
